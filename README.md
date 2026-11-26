@@ -1,8 +1,8 @@
 # One Line, One Laugh
 
-![make.fun](https://make.fun/badge/u-deysumbrella-one-line-one-laugh-e0cdcda9.svg)
-![rank](https://make.fun/badge/u-deysumbrella-one-line-one-laugh-e0cdcda9/qw123gyj-dev/u-deysumbrella-one-line-one-laugh-e0cdcda9/rank.svg)
-![reward](https://make.fun/badge/u-deysumbrella-one-line-one-laugh-e0cdcda9/qw123gyj-dev/u-deysumbrella-one-line-one-laugh-e0cdcda9/reward.svg)
+[![One Line, One Laugh](https://make.fun/badge/u-deysumbrella-one-line-one-laugh-e0cdcda9.svg)](https://make.fun/competitions/u-deysumbrella-one-line-one-laugh-e0cdcda9)
+[![Rank](https://make.fun/badge/u-deysumbrella-one-line-one-laugh-e0cdcda9/qw123gyj-dev/u-deysumbrella-one-line-one-laugh-e0cdcda9/rank.svg)](https://make.fun/competitions/u-deysumbrella-one-line-one-laugh-e0cdcda9)
+[![Reward](https://make.fun/badge/u-deysumbrella-one-line-one-laugh-e0cdcda9/qw123gyj-dev/u-deysumbrella-one-line-one-laugh-e0cdcda9/reward.svg)](https://make.fun/competitions/u-deysumbrella-one-line-one-laugh-e0cdcda9)
 
 A deterministic picker for the funniest one-liner. It holds 14 candidate
 one-line jokes and scores each one against five fixed criteria — setup/punch
@@ -36,6 +36,20 @@ node main.ts --all      # print all 14 candidates, ranked best-first
 node main.ts --top 3    # print the top 3 candidates
 node main.ts --json     # print the full ranking as JSON
 node main.ts --help     # print usage
+```
+
+## Entry file
+
+Every run writes the winning line to `entry.txt` in `$MAKEFUN_OUTPUT_DIR`
+(or `/output/entry.txt` when that variable is unset), no matter which flag
+was passed. The file contains exactly the winning line as a single line —
+no trailing newline, no extra text — and the program reads it back and
+verifies the bytes match the winner before printing anything. If the write
+or the verification fails, the program exits non-zero with an error.
+
+```sh
+MAKEFUN_OUTPUT_DIR=/tmp/out node main.ts   # writes /tmp/out/entry.txt
+node main.ts                                # writes /output/entry.txt
 ```
 
 ## How scoring works
